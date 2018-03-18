@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Colorify</string>
+    <string name="TeamMembersNames">Dor Azouri, Merav Ohana</string>
+    <string name="NoPictureChosenError">No Picture Chosen for Avatar</string>
+    <string name="ErrorGettingPicture">Error Getting Picture. Try Another Picture.</string>
+</resources>
