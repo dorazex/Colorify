@@ -21,25 +21,25 @@ public class DisplayUserInfo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_user_info);
 
-        String fullName = getIntent().getStringExtra("EXTRA_FULL_NAME");
+        String fullName = getIntent().getStringExtra(getString(R.string.EXTRA_USER_FULL_NAME));
         ((TextView)findViewById(R.id.textViewFullName)).setText(fullName);
 
-        String emailAddress = getIntent().getStringExtra("EXTRA_EMAIL_ADDRESS");
+        String emailAddress = getIntent().getStringExtra(getString(R.string.EXTRA_USER_EMAIL_ADDRESS));
         ((TextView)findViewById(R.id.textViewEmailAddress)).setText(emailAddress);
 
-        String phoneNumber = getIntent().getStringExtra("EXTRA_PHONE_NUMBER");
+        String phoneNumber = getIntent().getStringExtra(getString(R.string.EXTRA_USER_PHONE_NUMBER));
         ((TextView)findViewById(R.id.textViewPhoneNumber)).setText(phoneNumber);
 
-        String password = getIntent().getStringExtra("EXTRA_PASSWORD");
+        String password = getIntent().getStringExtra(getString(R.string.EXTRA_USER_PASSWORD));
         ((TextView)findViewById(R.id.textViewPassword)).setText(password);
 
-        String gender = getIntent().getStringExtra("EXTRA_GENDER");
+        String gender = getIntent().getStringExtra(getString(R.string.EXTRA_USER_GENDER));
         ((TextView)findViewById(R.id.textViewGender)).setText(gender);
 
-        String dateOfBirth = getIntent().getStringExtra("EXTRA_DATE_OF_BIRTH");
+        String dateOfBirth = getIntent().getStringExtra(getString(R.string.EXTRA_USER_DATE_OF_BIRTH));
         ((TextView)findViewById(R.id.textViewDateOfBirth)).setText(dateOfBirth);
 
-        String avatarUriString = getIntent().getStringExtra("EXTRA_AVATAR");
+        String avatarUriString = getIntent().getStringExtra(getString(R.string.EXTRA_USER_AVATAR));
         if (avatarUriString!=null) {
             Uri avatarUri = Uri.parse(avatarUriString);
             Bitmap avatarBitmap = null;
@@ -60,5 +60,20 @@ public class DisplayUserInfo extends Activity {
                 startActivity(intent);
             }
         });
+
+        Button sendMailButton = (Button)findViewById(R.id.buttonSendMail);
+        sendMailButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                String toEmailAddress = ((TextView)findViewById(R.id.textViewEmailAddress)).getText().toString();
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto",toEmailAddress, null));
+
+                startActivity(Intent.createChooser(intent, getString(R.string.SEND_MAIL_TITLE)));
+            }
+        });
+
+
+
     }
 }

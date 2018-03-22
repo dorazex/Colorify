@@ -21,6 +21,4 @@
         <activity android:name=".DisplayUserInfo"
             android:launchMode = "singleInstance" />
     </application>
-
-
 </manifest>

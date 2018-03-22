@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Colorify</string>
-    <string name="TeamMembersNames">Dor Azouri, Merav Ohana</string>
+    <string name="TeamMembersNames">Dor Azouri</string>
     <string name="NoPictureChosenError">No Picture Chosen for Avatar</string>
     <string name="ErrorGettingPicture">Error Getting Picture. Try Another Picture.</string>
+    <string name="EXTRA_USER_FULL_NAME">EXTRA_FULL_NAME</string>
+    <string name="EXTRA_USER_EMAIL_ADDRESS">EXTRA_EMAIL_ADDRESS</string>
+    <string name="EXTRA_USER_PHONE_NUMBER">EXTRA_PHONE_NUMBER</string>
+    <string name="EXTRA_USER_PASSWORD">EXTRA_PASSWORD</string>
+    <string name="EXTRA_USER_GENDER">EXTRA_GENDER</string>
+    <string name="EXTRA_USER_DATE_OF_BIRTH">EXTRA_DATE_OF_BIRTH</string>
+    <string name="EXTRA_USER_AVATAR">EXTRA_AVATAR</string>
+    <string name="SEND_MAIL_TITLE">Send Email</string>
+    <string name="SELECT_PICTURE_TITLE">Select Picture</string>
 </resources>

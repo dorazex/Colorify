@@ -32,7 +32,7 @@ public class EnterUserInfo extends Activity {
     private String getSelectedGender(RadioGroup rg) throws InvalidUserInfo{
         int selectedRadioButtonID = rg.getCheckedRadioButtonId();
         if (-1 == selectedRadioButtonID){
-            throw new InvalidUserInfo("No Gender Selected!");
+            throw new InvalidUserInfo("No Gender Selected");
         }
         RadioButton selectedRadioButton = (RadioButton) findViewById(selectedRadioButtonID);
 
@@ -122,16 +122,15 @@ public class EnterUserInfo extends Activity {
         submitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-//                setContentView(R.layout.activity_splash_screen);
                 Intent intent = new Intent(getBaseContext(), DisplayUserInfo.class);
                 try {
-                    intent.putExtra("EXTRA_FULL_NAME", getFullName(editTextFullName));
-                    intent.putExtra("EXTRA_EMAIL_ADDRESS", getEmailAddress(editTextEmailAddress));
-                    intent.putExtra("EXTRA_PHONE_NUMBER", getPhoneNumber(editTextPhoneNumber));
-                    intent.putExtra("EXTRA_PASSWORD", getPassword(editTextPassword));
-                    intent.putExtra("EXTRA_GENDER", getSelectedGender(radioGroupGender));
-                    intent.putExtra("EXTRA_DATE_OF_BIRTH", getDateOfBirth(editTextDateOfBirth));
-                    if (avatarUri != null) intent.putExtra("EXTRA_AVATAR", avatarUri.toString());
+                    intent.putExtra(getString(R.string.EXTRA_USER_FULL_NAME), getFullName(editTextFullName));
+                    intent.putExtra(getString(R.string.EXTRA_USER_EMAIL_ADDRESS), getEmailAddress(editTextEmailAddress));
+                    intent.putExtra(getString(R.string.EXTRA_USER_PHONE_NUMBER), getPhoneNumber(editTextPhoneNumber));
+                    intent.putExtra(getString(R.string.EXTRA_USER_PASSWORD), getPassword(editTextPassword));
+                    intent.putExtra(getString(R.string.EXTRA_USER_GENDER), getSelectedGender(radioGroupGender));
+                    intent.putExtra(getString(R.string.EXTRA_USER_DATE_OF_BIRTH), getDateOfBirth(editTextDateOfBirth));
+                    if (avatarUri != null) intent.putExtra(getString(R.string.EXTRA_USER_AVATAR), avatarUri.toString());
                 } catch (InvalidUserInfo invalidUserInfo) {
 //                    invalidUserInfo.printStackTrace();
                     ((TextView) findViewById(R.id.textViewErrorMessage)).setText(invalidUserInfo.getMessage());
@@ -151,7 +150,8 @@ public class EnterUserInfo extends Activity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivityForResult(Intent.createChooser(intent, getString(R.string.SELECT_PICTURE_TITLE)), PICK_IMAGE);
 
                 startActivity(intent);
             }
@@ -169,7 +169,6 @@ public class EnterUserInfo extends Activity {
             }
             try{
                 Uri selectedImage = imageReturnedIntent.getData();
-//                Bitmap yourSelectedImage = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                 this.avatarUri = selectedImage;
                 ((ImageView)findViewById(R.id.imageViewAvatarThumb)).setImageURI(selectedImage);
 
@@ -178,6 +177,4 @@ public class EnterUserInfo extends Activity {
             }
         }
     }
-
-
 }

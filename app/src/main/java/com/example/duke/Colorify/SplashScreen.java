@@ -14,7 +14,7 @@ public class SplashScreen extends Activity {
             @Override
             public void run(){
                 try{
-                    sleep(1000);
+                    sleep(getBaseContext().getResources().getInteger(R.integer.splashScreenTimeout));
                     Intent intent = new Intent(getApplicationContext(), EnterUserInfo.class);
                     startActivity(intent);
                     finish();
